@@ -3,17 +3,16 @@ using Android.Views;
 
 namespace XAnimation
 {
-
     public class SlideInDownAnimator : BaseViewAnimator
     {
         public override bool AlphaFromZero => true;
 
         protected override void Prepare(View view)
         {
-            int distance = view.Top + view.Height;
+            var distance = view.Top + view.Height;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                    ObjectAnimator.OfFloat(view, "translationY", -distance, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,         1),
+                ObjectAnimator.OfFloat(view, "translationY", -distance, 0)
             );
         }
     }
@@ -24,11 +23,11 @@ namespace XAnimation
 
         protected override void Prepare(View view)
         {
-            ViewGroup parent = (ViewGroup)view.Parent;
-            int distance = parent.Width - view.Left;
+            var parent   = (ViewGroup) view.Parent;
+            var distance = parent.Width - view.Left;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                    ObjectAnimator.OfFloat(view, "translationX", -distance, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,         1),
+                ObjectAnimator.OfFloat(view, "translationX", -distance, 0)
             );
         }
     }
@@ -39,11 +38,11 @@ namespace XAnimation
 
         protected override void Prepare(View view)
         {
-            ViewGroup parent = (ViewGroup)view.Parent;
-            int distance = parent.Width - view.Left;
+            var parent   = (ViewGroup) view.Parent;
+            var distance = parent.Width - view.Left;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                    ObjectAnimator.OfFloat(view, "translationX", distance, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,        1),
+                ObjectAnimator.OfFloat(view, "translationX", distance, 0)
             );
         }
     }
@@ -54,11 +53,11 @@ namespace XAnimation
 
         protected override void Prepare(View view)
         {
-            ViewGroup parent = (ViewGroup)view.Parent;
-            int distance = parent.Height - view.Top;
+            var parent   = (ViewGroup) view.Parent;
+            var distance = parent.Height - view.Top;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                    ObjectAnimator.OfFloat(view, "translationY", distance, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,        1),
+                ObjectAnimator.OfFloat(view, "translationY", distance, 0)
             );
         }
     }
@@ -68,11 +67,11 @@ namespace XAnimation
     {
         protected override void Prepare(View view)
         {
-            ViewGroup parent = (ViewGroup)view.Parent;
-            int distance = parent.Height - view.Top;
+            var parent   = (ViewGroup) view.Parent;
+            var distance = parent.Height - view.Top;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                    ObjectAnimator.OfFloat(view, "translationY", 0, distance)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationY", 0, distance)
             );
         }
     }
@@ -82,8 +81,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                    ObjectAnimator.OfFloat(view, "translationX", 0, -view.Right)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationX", 0, -view.Right)
             );
         }
     }
@@ -92,11 +91,11 @@ namespace XAnimation
     {
         protected override void Prepare(View view)
         {
-            ViewGroup parent = (ViewGroup)view.Parent;
-            int distance = parent.Width - view.Left;
+            var parent   = (ViewGroup) view.Parent;
+            var distance = parent.Width - view.Left;
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                    ObjectAnimator.OfFloat(view, "translationX", 0, distance)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationX", 0, distance)
             );
         }
     }
@@ -106,10 +105,9 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                    ObjectAnimator.OfFloat(view, "translationY", 0, -view.Bottom)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationY", 0, -view.Bottom)
             );
         }
     }
-
 }

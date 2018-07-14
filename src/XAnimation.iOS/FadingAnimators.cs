@@ -3,27 +3,26 @@ using UIKit;
 
 namespace XAnimation
 {
+    public class FadeToAnimator : BaseViewAnimator
+    {
+        public float DestValue { get; set; } = 1;
 
-	public class FadeToAnimator : BaseViewAnimator
-	{
-		public float DestValue { get; set; } = 1;
+        protected override void Prepare(UIView view)
+        {
+            PlayTogether(
+                CreateKeyFrame(Opacity, (float) view.Alpha, DestValue)
+            );
+        }
 
-		protected override void Prepare(UIView view)
-		{
-			PlayTogether(
-                CreateKeyFrame(Opacity, (float)view.Alpha, DestValue)
-			);
-		}
-
-		public FadeToAnimator SetDestValue(float value)
-		{
-			DestValue = value;
-			return this;
-		}
-	}
+        public FadeToAnimator SetDestValue(float value)
+        {
+            DestValue = value;
+            return this;
+        }
+    }
 
 
-	public class FadeInAnimator : BaseViewAnimator
+    public class FadeInAnimator : BaseViewAnimator
     {
         public override bool AlphaFromZero => true;
 
@@ -31,7 +30,7 @@ namespace XAnimation
 
         protected override void Prepare(UIView view)
         {
-			PlayTogether(
+            PlayTogether(
                 CreateKeyFrame(Opacity, 0, DestValue)
             );
         }
@@ -50,9 +49,9 @@ namespace XAnimation
 
         protected override void Prepare(UIView view)
         {
-			PlayTogether(
-                CreateKeyFrame(Opacity, 0, 1), 
-                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, (float)-view.Bounds.Height / 4f, 0f)
+            PlayTogether(
+                CreateKeyFrame(Opacity,      0,                             1),
+                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, (float) -view.Bounds.Height / 4f, 0f)
             );
         }
     }
@@ -63,9 +62,9 @@ namespace XAnimation
 
         protected override void Prepare(UIView view)
         {
-			PlayTogether(
-                CreateKeyFrame(Opacity, 0, 1),
-                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, (float)-view.Bounds.Width / 4f, 0f)
+            PlayTogether(
+                CreateKeyFrame(Opacity,      0,                             1),
+                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, (float) -view.Bounds.Width / 4f, 0f)
             );
         }
     }
@@ -77,10 +76,10 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 0, 1),
-                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, (float)view.Bounds.Width / 4f, 0f)
+                CreateKeyFrame(Opacity,      0,                             1),
+                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, (float) view.Bounds.Width / 4f, 0f)
             );
-		}
+        }
     }
 
     public class FadeInUpAnimator : BaseViewAnimator
@@ -90,14 +89,11 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 0, 1),
-                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, (float)view.Bounds.Height / 4f, 0f)
+                CreateKeyFrame(Opacity,      0,                             1),
+                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, (float) view.Bounds.Height / 4f, 0f)
             );
-		}
+        }
     }
-
-
-
 
 
     public class FadeOutAnimator : BaseViewAnimator
@@ -109,7 +105,7 @@ namespace XAnimation
             PlayTogether(CreateKeyFrame(Opacity, 1, DestValue));
         }
 
-        public FadeOutAnimator SetDestValue(float value) 
+        public FadeOutAnimator SetDestValue(float value)
         {
             DestValue = value;
             return this;
@@ -121,8 +117,8 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
-                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, 0, (float)view.Bounds.Height / 4f)
+                CreateKeyFrame(Opacity,      1,                             0),
+                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, 0, (float) view.Bounds.Height / 4f)
             );
         }
     }
@@ -132,8 +128,8 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
-                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, 0, (float)-view.Bounds.Width / 4f)
+                CreateKeyFrame(Opacity,      1,                             0),
+                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, 0, (float) -view.Bounds.Width / 4f)
             );
         }
     }
@@ -143,9 +139,9 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
-                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, 0, (float)view.Bounds.Width / 4f));
-		}
+                CreateKeyFrame(Opacity,      1,                             0),
+                CreateKeyFrame(TranslationX, CAMediaTimingFunction.EaseOut, 0, (float) view.Bounds.Width / 4f));
+        }
     }
 
     public class FadeOutUpAnimator : BaseViewAnimator
@@ -153,10 +149,9 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
-                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, 0, (float)-view.Bounds.Height / 4f)
+                CreateKeyFrame(Opacity,      1,                             0),
+                CreateKeyFrame(TranslationY, CAMediaTimingFunction.EaseOut, 0, (float) -view.Bounds.Height / 4f)
             );
-		}
+        }
     }
-
 }

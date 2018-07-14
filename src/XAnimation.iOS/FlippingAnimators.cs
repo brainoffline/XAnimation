@@ -2,7 +2,6 @@ using UIKit;
 
 namespace XAnimation
 {
-
     public class FlipInXAnimator : BaseViewAnimator
     {
         public override bool AlphaFromZero => true;
@@ -10,7 +9,7 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 0.25f, 0.5f, 0.75f, 1f),
+                CreateKeyFrame(Opacity,          0.25f,                0.5f,                  0.75f,                1f),
                 CreateKeyFrame(TransformRotateX, DegreesToRadians(90), DegreesToRadians(-15), DegreesToRadians(15), 0f)
             );
         }
@@ -23,7 +22,7 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 0.25f, 0.5f, 0.75f, 1f),
+                CreateKeyFrame(Opacity,          0.25f,                0.5f,                  0.75f,                1f),
                 CreateKeyFrame(TransformRotateY, DegreesToRadians(90), DegreesToRadians(-15), DegreesToRadians(15), 0f)
             );
         }
@@ -34,7 +33,7 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
+                CreateKeyFrame(Opacity,          1, 0),
                 CreateKeyFrame(TransformRotateX, 0, DegreesToRadians(90))
             );
         }
@@ -45,10 +44,9 @@ namespace XAnimation
         protected override void Prepare(UIView view)
         {
             PlayTogether(
-                CreateKeyFrame(Opacity, 1, 0),
+                CreateKeyFrame(Opacity,          1, 0),
                 CreateKeyFrame(TransformRotateY, 0, DegreesToRadians(90))
             );
         }
     }
-
 }

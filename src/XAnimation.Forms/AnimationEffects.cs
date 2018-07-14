@@ -11,7 +11,7 @@ namespace XAnimation
         public static Task Staggered(
             List<VisualElement> elements,
             AnimationDefinition animation,
-            int initialDelay, int staggeredDelay, bool clear)
+            int                 initialDelay, int staggeredDelay, bool clear)
         {
             var list = new List<Task>();
 
@@ -31,12 +31,12 @@ namespace XAnimation
         }
 
         public static Task Staggered(
-            List<VisualElement> elements,
+            List<VisualElement>       elements,
             List<AnimationDefinition> animations,
-            int initialDelay, int staggeredDelay, bool clear)
+            int                       initialDelay, int staggeredDelay, bool clear)
         {
             var list = new List<Task>();
-            var rnd = new Random();
+            var rnd  = new Random();
 
             var delay = initialDelay;
             foreach (var element in elements)
@@ -56,13 +56,13 @@ namespace XAnimation
         }
 
         public static Task StaggeredChildren(
-            VisualElement rootElement,
+            VisualElement       rootElement,
             AnimationDefinition animation,
-            int initialDelay, int staggeredDelay, bool clear)
+            int                 initialDelay, int staggeredDelay, bool clear)
         {
             var list = new List<Task>();
 
-            var delay = initialDelay;
+            var delay    = initialDelay;
             var elements = rootElement.LogicalChildren;
 
             foreach (var element in elements.OfType<VisualElement>())
@@ -78,7 +78,5 @@ namespace XAnimation
 
             return Task.WhenAll(list);
         }
-
-
     }
 }

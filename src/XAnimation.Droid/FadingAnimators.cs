@@ -3,7 +3,6 @@ using Android.Views;
 
 namespace XAnimation
 {
-
     public class FadeInAnimator : BaseViewAnimator
     {
         public override bool AlphaFromZero => true;
@@ -12,7 +11,7 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "alpha", 0, 1)
-                );
+            );
         }
     }
 
@@ -23,8 +22,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                ObjectAnimator.OfFloat(view, "translationY", (float)-view.Height / 4, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                        1),
+                ObjectAnimator.OfFloat(view, "translationY", (float) -view.Height / 4, 0)
             );
         }
     }
@@ -36,8 +35,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                ObjectAnimator.OfFloat(view, "translationX", (float)-view.Width / 4, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                       1),
+                ObjectAnimator.OfFloat(view, "translationX", (float) -view.Width / 4, 0)
             );
         }
     }
@@ -49,8 +48,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                ObjectAnimator.OfFloat(view, "translationX", (float)view.Width / 4, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                      1),
+                ObjectAnimator.OfFloat(view, "translationX", (float) view.Width / 4, 0)
             );
         }
     }
@@ -62,14 +61,11 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1),
-                ObjectAnimator.OfFloat(view, "translationY", (float)view.Height / 4, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                       1),
+                ObjectAnimator.OfFloat(view, "translationY", (float) view.Height / 4, 0)
             );
         }
     }
-
-
-
 
 
     public class FadeOutAnimator : BaseViewAnimator
@@ -78,7 +74,7 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "alpha", 1, 0)
-                );
+            );
         }
     }
 
@@ -87,8 +83,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                ObjectAnimator.OfFloat(view, "translationY", 0, (float)view.Height / 4)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationY", 0, (float) view.Height / 4)
             );
         }
     }
@@ -98,8 +94,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                ObjectAnimator.OfFloat(view, "translationX", 0, (float)-view.Width / 4)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationX", 0, (float) -view.Width / 4)
             );
         }
     }
@@ -109,8 +105,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                ObjectAnimator.OfFloat(view, "translationX", 0, (float)view.Width / 4)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationX", 0, (float) view.Width / 4)
             );
         }
     }
@@ -120,10 +116,9 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0),
-                ObjectAnimator.OfFloat(view, "translationY", 0, (float)-view.Height / 4)
+                ObjectAnimator.OfFloat(view, "alpha",        1, 0),
+                ObjectAnimator.OfFloat(view, "translationY", 0, (float) -view.Height / 4)
             );
         }
     }
-
 }

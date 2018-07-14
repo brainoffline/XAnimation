@@ -10,10 +10,10 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1, 1, 1),
+                ObjectAnimator.OfFloat(view, "alpha",  0,    1,     1,    1),
                 ObjectAnimator.OfFloat(view, "scaleX", 0.3f, 1.05f, 0.9f, 1),
                 ObjectAnimator.OfFloat(view, "scaleY", 0.3f, 1.05f, 0.9f, 1)
-                );
+            );
         }
     }
 
@@ -24,8 +24,8 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                    ObjectAnimator.OfFloat(view, "alpha", 0, 1, 1, 1),
-                    ObjectAnimator.OfFloat(view, "translationY", -view.Height   , 30, -10, 0)
+                ObjectAnimator.OfFloat(view, "alpha",        0,            1,  1,   1),
+                ObjectAnimator.OfFloat(view, "translationY", -view.Height, 30, -10, 0)
             );
         }
     }
@@ -38,7 +38,7 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "translationX", -view.Width, 30, -10, 0),
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1, 1, 1)
+                ObjectAnimator.OfFloat(view, "alpha",        0,           1,  1,   1)
             );
         }
     }
@@ -51,7 +51,7 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "translationX", view.MeasuredWidth + view.Width, -30, 10, 0),
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1, 1, 1)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                               1,   1,  1)
             );
         }
     }
@@ -64,10 +64,8 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "translationY", view.MeasuredHeight, -30, 10, 0),
-                ObjectAnimator.OfFloat(view, "alpha", 0, 1, 1, 1)
+                ObjectAnimator.OfFloat(view, "alpha",        0,                   1,   1,  1)
             );
         }
     }
-
-
 }

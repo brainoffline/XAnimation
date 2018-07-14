@@ -9,7 +9,7 @@ namespace XAnimation
         {
             OpacityFromZero = true;
         }
-        
+
         public override Animation CreateAnimation(VisualElement element)
         {
             element.Opacity = 0;
@@ -19,14 +19,14 @@ namespace XAnimation
 
     public class FadeInAnimation : AnimationDefinition
     {
-        public double DistanceX { get; set; }
-        public double DistanceY { get; set; }
-
         public FadeInAnimation()
         {
-            Duration = 400;
+            Duration        = 400;
             OpacityFromZero = true;
         }
+
+        public double DistanceX { get; set; }
+        public double DistanceY { get; set; }
 
         public override Animation CreateAnimation(VisualElement element)
         {
@@ -46,13 +46,13 @@ namespace XAnimation
 
     public class FadeOutAnimation : AnimationDefinition
     {
-        public double DistanceX { get; set; }
-        public double DistanceY { get; set; }
-
         public FadeOutAnimation()
         {
             Duration = 400;
         }
+
+        public double DistanceX { get; set; }
+        public double DistanceY { get; set; }
 
         public override Animation CreateAnimation(VisualElement element)
         {
@@ -72,113 +72,113 @@ namespace XAnimation
 
     public class FadeInUpAnimation : FadeInAnimation
     {
+        public FadeInUpAnimation()
+        {
+            Distance = 100;
+        }
+
         public double Distance
         {
             get => DistanceY;
             set => DistanceY = value;
-        }
-
-        public FadeInUpAnimation()
-        {
-            Distance = 100;
         }
     }
 
     public class FadeInDownAnimation : FadeInAnimation
     {
+        public FadeInDownAnimation()
+        {
+            Distance = -100;
+        }
+
         public double Distance
         {
             get => DistanceY;
             set => DistanceY = value;
-        }
-
-        public FadeInDownAnimation()
-        {
-            Distance = -100;
         }
     }
 
     public class FadeInLeftAnimation : FadeInAnimation
     {
+        public FadeInLeftAnimation()
+        {
+            Distance = 100;
+        }
+
         public double Distance
         {
             get => DistanceX;
             set => DistanceX = value;
-        }
-
-        public FadeInLeftAnimation()
-        {
-            Distance = 100;
         }
     }
 
     public class FadeInRightAnimation : FadeInAnimation
     {
+        public FadeInRightAnimation()
+        {
+            Distance = -100;
+        }
+
         public double Distance
         {
             get => DistanceX;
             set => DistanceX = value;
-        }
-
-        public FadeInRightAnimation()
-        {
-            Distance = -100;
         }
     }
 
     public class FadeOutUpAnimation : FadeOutAnimation
     {
+        public FadeOutUpAnimation()
+        {
+            Distance = -20;
+        }
+
         public double Distance
         {
             get => DistanceY;
             set => DistanceY = value;
-        }
-
-        public FadeOutUpAnimation()
-        {
-            Distance = -20;
         }
     }
 
     public class FadeOutDownAnimation : FadeOutAnimation
     {
+        public FadeOutDownAnimation()
+        {
+            Distance = 20;
+        }
+
         public double Distance
         {
             get => DistanceY;
             set => DistanceY = value;
-        }
-
-        public FadeOutDownAnimation()
-        {
-            Distance = 20;
         }
     }
 
     public class FadeOutLeftAnimation : FadeOutAnimation
     {
+        public FadeOutLeftAnimation()
+        {
+            Distance = -20;
+        }
+
         public double Distance
         {
             get => DistanceX;
             set => DistanceX = value;
         }
-
-        public FadeOutLeftAnimation()
-        {
-            Distance = -20;
-        }
     }
 
     public class FadeOutRightAnimation : FadeOutAnimation
     {
+        public FadeOutRightAnimation()
+        {
+            Distance = 20;
+        }
+
         public double Distance
         {
             get => DistanceY;
             set => DistanceY = value;
-        }
-
-        public FadeOutRightAnimation()
-        {
-            Distance = 20;
         }
     }
 }

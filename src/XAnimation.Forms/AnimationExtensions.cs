@@ -7,60 +7,57 @@ namespace XAnimation
     {
         public static Task<bool> Animate(this VisualElement visualElement, AnimationDefinition animationDefinition)
         {
-            var tcs = new TaskCompletionSource<bool>();
-            var animation = animationDefinition.CreateAnimation(visualElement);
+            var tcs         = new TaskCompletionSource<bool>();
+            var animation   = animationDefinition.CreateAnimation(visualElement);
             var animationId = visualElement.Id.ToString();
 
             // Prevent any opacity challenges when element starts hidden
             if (animationDefinition.OpacityFromZero)
             {
-                visualElement.Opacity = 0;
+                visualElement.Opacity   = 0;
                 visualElement.IsVisible = true;
             }
 
             if (animationDefinition.PauseBefore > 0 ||
-                animationDefinition.PauseAfter > 0 ||
+                animationDefinition.PauseAfter  > 0 ||
                 animationDefinition.RepeatCount > 1 ||
-                animationDefinition.Delay > 0)
-            {
-                Task.Run(async () =>
-                {
-                    int remaining = animationDefinition.RepeatCount;
+                animationDefinition.Delay       > 0)
+                Task.Run(
+                    async () =>
+                    {
+                        var remaining = animationDefinition.RepeatCount;
 
-                    if (animationDefinition.PauseBefore > 0)
-                        await Task.Delay(animationDefinition.PauseBefore);
+                        if (animationDefinition.PauseBefore > 0)
+                            await Task.Delay(animationDefinition.PauseBefore);
 
-                    animation.Commit(
-                        owner:visualElement,
-                        name: animationId,
-                        rate: 16,
-                        length: animationDefinition.Duration,
-                        easing: null,
-                        finished: async (f, cancelled) =>
-                        {
-                            if (!cancelled && animationDefinition.PauseAfter > 0)
-                                await Task.Delay(animationDefinition.PauseAfter);
+                        animation.Commit(
+                            visualElement,
+                            animationId,
+                            16,
+                            animationDefinition.Duration,
+                            null,
+                            async (f, cancelled) =>
+                            {
+                                if (!cancelled && animationDefinition.PauseAfter > 0)
+                                    await Task.Delay(animationDefinition.PauseAfter);
 
-                            if (cancelled || remaining <= 0)
-                                tcs.SetResult(cancelled);
-                        },
-                        repeat: () =>
-                        {
-                            remaining--;
-                            return remaining > 0;
-                        });
-                });
-            }
+                                if (cancelled || remaining <= 0)
+                                    tcs.SetResult(cancelled);
+                            },
+                            () =>
+                            {
+                                remaining--;
+                                return remaining > 0;
+                            });
+                    });
             else
-            {
                 animation.Commit(
-                    owner: visualElement,
-                    name: animationId,
-                    rate: 16,
-                    length: animationDefinition.Duration,
-                    easing: null,
-                    finished: (f, a) => tcs.SetResult(a));
-            }
+                    visualElement,
+                    animationId,
+                    16,
+                    animationDefinition.Duration,
+                    null,
+                    (f, a) => tcs.SetResult(a));
 
             return tcs.Task;
         }
@@ -70,15 +67,15 @@ namespace XAnimation
             visualElement.AbortAnimation(visualElement.Id.ToString());
 
             visualElement.BatchBegin();
-            visualElement.Opacity = opacity;
+            visualElement.Opacity      = opacity;
             visualElement.TranslationX = 0;
             visualElement.TranslationY = 0;
-            visualElement.Rotation = 0;
-            visualElement.Scale = 1;
-            visualElement.RotationX = 0;
-            visualElement.RotationY = 0;
-            visualElement.AnchorX = 0.5;
-            visualElement.AnchorY = 0.5;
+            visualElement.Rotation     = 0;
+            visualElement.Scale        = 1;
+            visualElement.RotationX    = 0;
+            visualElement.RotationY    = 0;
+            visualElement.AnchorX      = 0.5;
+            visualElement.AnchorY      = 0.5;
             visualElement.BatchCommit();
         }
     }

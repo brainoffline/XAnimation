@@ -3,7 +3,6 @@ using Android.Views;
 
 namespace XAnimation
 {
-
     public class FlipInXAnimator : BaseViewAnimator
     {
         public override bool AlphaFromZero => true;
@@ -11,9 +10,9 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "rotationX", 90, -15, 15, 0),
-                ObjectAnimator.OfFloat(view, "alpha", 0.25f, 0.5f, 0.75f, 1)
-                );
+                ObjectAnimator.OfFloat(view, "rotationX", 90,    -15,  15,    0),
+                ObjectAnimator.OfFloat(view, "alpha",     0.25f, 0.5f, 0.75f, 1)
+            );
         }
     }
 
@@ -24,9 +23,9 @@ namespace XAnimation
         protected override void Prepare(View view)
         {
             AnimatorAgent.PlayTogether(
-                ObjectAnimator.OfFloat(view, "rotationY", 90, -15, 15, 0),
-                ObjectAnimator.OfFloat(view, "alpha", 0.25f, 0.5f, 0.75f, 1)
-                );
+                ObjectAnimator.OfFloat(view, "rotationY", 90,    -15,  15,    0),
+                ObjectAnimator.OfFloat(view, "alpha",     0.25f, 0.5f, 0.75f, 1)
+            );
         }
     }
 
@@ -36,8 +35,8 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "rotationX", 0, 90),
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0)
-                );
+                ObjectAnimator.OfFloat(view, "alpha",     1, 0)
+            );
         }
     }
 
@@ -47,9 +46,8 @@ namespace XAnimation
         {
             AnimatorAgent.PlayTogether(
                 ObjectAnimator.OfFloat(view, "rotationY", 0, 90),
-                ObjectAnimator.OfFloat(view, "alpha", 1, 0)
-                );
+                ObjectAnimator.OfFloat(view, "alpha",     1, 0)
+            );
         }
     }
-
 }

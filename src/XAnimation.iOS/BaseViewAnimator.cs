@@ -8,52 +8,43 @@ namespace XAnimation
 {
     public abstract class BaseViewAnimator
     {
-        public static double DefaultDuration = 1.0d;
-
         public const string TranslationX = "transform.translation.x";
         public const string TranslationY = "transform.translation.y";
+
         public const string TranslationZ = "transform.translation.z";
+
         //public const string Translation = "transform.translation"; // NSSize or CGSize
-        public const string TransformScale = "transform.scale";
-        public const string TransformScaleX = "transform.scale.x";
-        public const string TransformScaleY = "transform.scale.y";
-        public const string TransformScaleZ = "transform.scale.z";
-        public const string TransformRotation = "transform.rotation";        // Radians (Z)
-        public const string TransformRotateX = "transform.rotation.x";
-        public const string TransformRotateY = "transform.rotation.y";
-        public const string TransformRotateZ = "transform.rotation.z";
-        public const string Opacity = "opacity";
-        public const string BoundsSize = "bounds.size";    // CGRect
-        public const string BoundsSizeWidth = "bounds.size.width";
-        public const string BoundsSizeHeight = "bounds.size.height";
-        public const string BoundsOrigin = "bounds.origin";    // CGPoint
-        public const string BoundsOriginX = "bounds.origin.x";
-        public const string BoundsOriginY = "bounds.origin.y";
-
-
-        public CAAnimationGroup AnimatorAgent { get; private set; }
-        TaskCompletionSource<bool> tcs;
-
-        public double Duration { get; set; } = DefaultDuration;
-        public virtual bool AlphaFromZero => false;
-        UIView view;
-
-        protected abstract void Prepare(UIView view);
+        public const  string                     TransformScale    = "transform.scale";
+        public const  string                     TransformScaleX   = "transform.scale.x";
+        public const  string                     TransformScaleY   = "transform.scale.y";
+        public const  string                     TransformScaleZ   = "transform.scale.z";
+        public const  string                     TransformRotation = "transform.rotation"; // Radians (Z)
+        public const  string                     TransformRotateX  = "transform.rotation.x";
+        public const  string                     TransformRotateY  = "transform.rotation.y";
+        public const  string                     TransformRotateZ  = "transform.rotation.z";
+        public const  string                     Opacity           = "opacity";
+        public const  string                     BoundsSize        = "bounds.size"; // CGRect
+        public const  string                     BoundsSizeWidth   = "bounds.size.width";
+        public const  string                     BoundsSizeHeight  = "bounds.size.height";
+        public const  string                     BoundsOrigin      = "bounds.origin"; // CGPoint
+        public const  string                     BoundsOriginX     = "bounds.origin.x";
+        public const  string                     BoundsOriginY     = "bounds.origin.y";
+        public static double                     DefaultDuration   = 1.0d;
+        private       TaskCompletionSource<bool> tcs;
+        private       UIView                     view;
 
         public BaseViewAnimator()
         {
-            AnimatorAgent = CAAnimationGroup.CreateAnimation();
+            AnimatorAgent                  =  CAAnimationGroup.CreateAnimation();
             AnimatorAgent.AnimationStarted += (sender, e) => { };
-            AnimatorAgent.AnimationStopped += (sender, e) => 
-            {
-                tcs?.SetResult(true);
-            };
+            AnimatorAgent.AnimationStopped += (sender, e) => { tcs?.SetResult(true); };
         }
 
-        protected float DegreesToRadians(float value)
-        {
-            return (float)(value * (Math.PI / 180.0f));
-        }
+
+        public CAAnimationGroup AnimatorAgent { get; }
+
+        public         double Duration      { get; set; } = DefaultDuration;
+        public virtual bool   AlphaFromZero => false;
 
         public UIView View
         {
@@ -83,26 +74,33 @@ namespace XAnimation
             get => AnimatorAgent.TimingFunction;
         }
 
+        protected abstract void Prepare(UIView view);
+
+        protected float DegreesToRadians(float value)
+        {
+            return (float) (value * (Math.PI / 180.0f));
+        }
+
         protected CAKeyFrameAnimation CreateKeyFrame(string keyPath, params float[] values)
         {
             return CAKeyFrameAnimation
-                    .FromKeyPath(keyPath)
-                    .SetValues(values);
+                .FromKeyPath(keyPath)
+                .SetValues(values);
         }
 
         protected CAKeyFrameAnimation CreateKeyFrame(string keyPath, string timingFuncName, params float[] values)
         {
             return CAKeyFrameAnimation
-                    .FromKeyPath(keyPath)
-                    .SetTimingFunc((NSString)NSObject.FromObject(timingFuncName))       // CAMediaTimingFunction.Linear
-                    .SetValues(values);
+                .FromKeyPath(keyPath)
+                .SetTimingFunc((NSString) NSObject.FromObject(timingFuncName)) // CAMediaTimingFunction.Linear
+                .SetValues(values);
         }
 
         public BaseViewAnimator Start(string name = null)
         {
             Prepare(view);
-            AnimatorAgent.Duration = Duration;// + StartDelay;
-            AnimatorAgent.FillMode = CAFillMode.Forwards;
+            AnimatorAgent.Duration            = Duration; // + StartDelay;
+            AnimatorAgent.FillMode            = CAFillMode.Forwards;
             AnimatorAgent.RemovedOnCompletion = false;
             if (AlphaFromZero)
                 view.Hidden = false;

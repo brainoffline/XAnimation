@@ -10,15 +10,15 @@ namespace XAnimation
 
     public class HingeAnimation : AnimationDefinition
     {
-        public Side Side { get; set; } = Side.Left;
-        public double Distance { get; set; } = 700;
-        public double? AnchorX { get; set; }
-        public double? AnchorY { get; set; }
-
         public HingeAnimation()
         {
             Duration = 1000;
         }
+
+        public Side    Side     { get; set; } = Side.Left;
+        public double  Distance { get; set; } = 700;
+        public double? AnchorX  { get; set; }
+        public double? AnchorY  { get; set; }
 
         public override Animation CreateAnimation(VisualElement element)
         {
@@ -29,11 +29,11 @@ namespace XAnimation
                 element.AnchorY = AnchorY ?? 0;
 
                 // Rotation
-                animation.WithConcurrent(f => element.Rotation = f, 0, 80, Easing.CubicInOut, 0, 0.2);
+                animation.WithConcurrent(f => element.Rotation = f, 0,  80, Easing.CubicInOut, 0,   0.2);
                 animation.WithConcurrent(f => element.Rotation = f, 80, 60, Easing.CubicInOut, 0.2, 0.4);
                 animation.WithConcurrent(f => element.Rotation = f, 60, 80, Easing.CubicInOut, 0.4, 0.6);
                 animation.WithConcurrent(f => element.Rotation = f, 80, 60, Easing.CubicInOut, 0.6, 0.8);
-                animation.WithConcurrent(f => element.Rotation = f, 60, 70, Easing.Linear, 0.8);
+                animation.WithConcurrent(f => element.Rotation = f, 60, 70, Easing.Linear,     0.8);
 
                 // Fall
                 animation.WithConcurrent(f => element.TranslationY = f, element.TranslationY, element.TranslationY + Distance, Easing.CubicIn, 0.7);
@@ -47,11 +47,11 @@ namespace XAnimation
                 element.AnchorY = AnchorY ?? 0;
 
                 // Rotation
-                animation.WithConcurrent(f => element.Rotation = f, 0, -80, Easing.CubicInOut, 0, 0.2);
+                animation.WithConcurrent(f => element.Rotation = f, 0,   -80, Easing.CubicInOut, 0,   0.2);
                 animation.WithConcurrent(f => element.Rotation = f, -80, -60, Easing.CubicInOut, 0.2, 0.4);
                 animation.WithConcurrent(f => element.Rotation = f, -60, -80, Easing.CubicInOut, 0.4, 0.6);
                 animation.WithConcurrent(f => element.Rotation = f, -80, -60, Easing.CubicInOut, 0.6, 0.8);
-                animation.WithConcurrent(f => element.Rotation = f, -60, -70, Easing.Linear, 0.8);
+                animation.WithConcurrent(f => element.Rotation = f, -60, -70, Easing.Linear,     0.8);
 
                 // Fall
                 animation.WithConcurrent(f => element.TranslationY = f, element.TranslationY, element.TranslationY + Distance, Easing.CubicIn, 0.7);

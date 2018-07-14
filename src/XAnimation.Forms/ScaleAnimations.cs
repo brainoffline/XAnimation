@@ -8,7 +8,7 @@ namespace XAnimation
 
         public ScaleInAnimation()
         {
-            Duration = 400;
+            Duration        = 400;
             OpacityFromZero = true;
         }
 
@@ -16,8 +16,8 @@ namespace XAnimation
         {
             var animation = new Animation();
 
-            animation.WithConcurrent(f => element.Opacity = f, 0, 1, null, 0, 0.5);
-            animation.WithConcurrent(f => element.Scale = f, StartScale, 1, Easing.CubicOut);
+            animation.WithConcurrent(f => element.Opacity = f, 0,          1, null, 0, 0.5);
+            animation.WithConcurrent(f => element.Scale   = f, StartScale, 1, Easing.CubicOut);
 
             return animation;
         }
@@ -36,8 +36,8 @@ namespace XAnimation
         {
             var animation = new Animation();
 
-            animation.WithConcurrent(f => element.Opacity = f, 1, 0, null, 0.5);
-            animation.WithConcurrent(f => element.Scale = f, element.Scale, EndScale, Easing.CubicIn);
+            animation.WithConcurrent(f => element.Opacity = f, 1,             0,        null, 0.5);
+            animation.WithConcurrent(f => element.Scale   = f, element.Scale, EndScale, Easing.CubicIn);
 
             return animation;
         }
@@ -45,17 +45,17 @@ namespace XAnimation
 
     public class ScaleFromElementAnimation : AnimationDefinition
     {
-        public VisualElement FromElement { get; set; }
-
         public ScaleFromElementAnimation()
         {
             OpacityFromZero = true;
-            Duration = 400;
+            Duration        = 400;
         }
+
+        public VisualElement FromElement { get; set; }
 
         public override Animation CreateAnimation(VisualElement element)
         {
-            var toBounds = element.Bounds;
+            var toBounds   = element.Bounds;
             var fromBounds = FromElement.Bounds;
 
             element.Layout(fromBounds);
@@ -65,15 +65,16 @@ namespace XAnimation
             var animation = new Animation();
 
             animation.WithConcurrent(f => element.Opacity = f, 0, 1, null, 0, 0.25);
-            animation.WithConcurrent(f =>
-            {
-                var newBounds = new Rectangle(
-                    fromBounds.X + (toBounds.X - fromBounds.X) * f,
-                    fromBounds.Y + (toBounds.Y - fromBounds.Y) * f,
-                    fromBounds.Width + (toBounds.Width - fromBounds.Width) * f,
-                    fromBounds.Height + (toBounds.Height - fromBounds.Height) * f);
-                element.Layout(newBounds);
-            });
+            animation.WithConcurrent(
+                f =>
+                {
+                    var newBounds = new Rectangle(
+                        fromBounds.X      + (toBounds.X      - fromBounds.X)      * f,
+                        fromBounds.Y      + (toBounds.Y      - fromBounds.Y)      * f,
+                        fromBounds.Width  + (toBounds.Width  - fromBounds.Width)  * f,
+                        fromBounds.Height + (toBounds.Height - fromBounds.Height) * f);
+                    element.Layout(newBounds);
+                });
 
             return animation;
         }

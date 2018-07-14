@@ -10,19 +10,19 @@ namespace XAnimation
 
     public class RotateAnimation : AnimationDefinition
     {
-        public double? StartRotation { get; set; }
-        public double? EndRotation { get; set; }
-        public Easing Easing { get; set; } = Easing.SinIn;
-
         public RotateAnimation()
         {
             Duration = 1000;
         }
 
+        public double? StartRotation { get; set; }
+        public double? EndRotation   { get; set; }
+        public Easing  Easing        { get; set; } = Easing.SinIn;
+
         public override Animation CreateAnimation(VisualElement element)
         {
             var startRotation = StartRotation ?? element.Rotation;
-            var endRotation = EndRotation ?? startRotation + 360.0;
+            var endRotation   = EndRotation   ?? startRotation + 360.0;
 
             var animation = new Animation();
 
@@ -41,7 +41,7 @@ namespace XAnimation
 
         public RotateInAnimation()
         {
-            Duration = 400;
+            Duration        = 400;
             OpacityFromZero = true;
         }
 
@@ -63,6 +63,7 @@ namespace XAnimation
 
                 animation.WithConcurrent(f => element.Rotation = f, -45, 0, Easing.SinIn);
             }
+
             animation.WithConcurrent(f => element.Opacity = f, 0, 1, Easing.SinIn, 0, 0.25);
 
             return animation;
@@ -96,6 +97,7 @@ namespace XAnimation
 
                 animation.WithConcurrent(f => element.Rotation = f, 0, -45, Easing.SinOut);
             }
+
             animation.WithConcurrent(f => element.Opacity = f, 1, 0, Easing.SinOut, 0.5);
 
             return animation;
