@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Brian Donovan-Smith</Authors>
+    <Company>BrainOffline</Company>
+    <Product>XAnimation.Forms.Sample</Product>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,5 +14,21 @@
   <ItemGroup>
     <ProjectReference Include="..\..\XAnimation.Forms\XAnimation.Forms.csproj" />
     <ProjectReference Include="..\..\XAnimation\XAnimation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Themes\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\BaseResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
 </Project>

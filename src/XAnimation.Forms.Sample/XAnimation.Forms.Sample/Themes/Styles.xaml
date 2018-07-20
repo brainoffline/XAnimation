@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    x:Class="Themes.Styles">
+
+    <OnIdiom x:Key="MainWrapperPadding" x:TypeArguments="Thickness" Phone="0" Tablet="100,0,100,0" Desktop="100,0,100,0" TV="0" Watch="0" />
+
+    <OnIdiom x:Key="PhoneVisible" x:TypeArguments="x:Boolean" Phone="True" Tablet="False" Desktop="False" TV="False" Watch="False"/>
+    <OnIdiom x:Key="TabletVisible" x:TypeArguments="x:Boolean" Phone="False" Tablet="True" Desktop="False" TV="False" Watch="False"/>
+    <OnIdiom x:Key="DesktopVisible" x:TypeArguments="x:Boolean" Phone="False" Tablet="False" Desktop="True" TV="False" Watch="False"/>
+    <OnIdiom x:Key="TvVisible" x:TypeArguments="x:Boolean" Phone="False" Tablet="False" Desktop="False" TV="True" Watch="False"/>
+    <OnIdiom x:Key="WatchVisible" x:TypeArguments="x:Boolean" Phone="False" Tablet="False" Desktop="False" TV="False" Watch="True"/>
+
+    <OnPlatform x:Key="AndroidVisible" x:TypeArguments="x:Boolean" Platforms="Android" Default="True"/>
+    <OnPlatform x:Key="iOSVisible" x:TypeArguments="x:Boolean" Platforms="iOS" Default="True"/>
+    <OnPlatform x:Key="UWPVisible" x:TypeArguments="x:Boolean" Platforms="UWP" Default="True"/>
+
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="BarTextColor" Value="{StaticResource OnPrimary}" />
+    </Style>
+
+
+</ResourceDictionary>
+    
